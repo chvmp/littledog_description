@@ -1,6 +1,6 @@
-<robot name="LittleDog" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://drake.mit.edu drake-distro/drake/doc/drakeURDF.xsd" xmlns="http://drake.mit.edu">
+<robot name="LittleDog">
     <!-- converted from https://svn.csail.mit.edu/littledog/trunk/simulation/little_dog.sd -->
-    
+    <!-- http://drake.mit.edu -->
     <link name="body">
         <inertial>
             <mass value="1.800000" />
@@ -23,17 +23,16 @@
         </inertial>
     </link>
     <joint name="front_left_hip_roll" type="revolute">
-        <limit effort="25" lower="-3.1416" upper="3.1416" velocity="1.5" />
         <parent link="body" />
         <child link="front_left_hip" />
-        <origin xyz="0.101000 0.036250 0.000000" />
+        <origin xyz="0.101000 0.036250 0.000000" rpy="0.0 0.0 0.0" />
         <axis xyz="1 0 0" />
-        <limit lower="-.6" upper=".6" />
+        <limit effort="25" velocity="1.5" lower="-.6" upper=".6" />
     </joint>
-    <transmission type="SimpleTransmission">
+    <!-- <transmission type="SimpleTransmission">
         <joint name="front_left_hip_roll" />
         <actuator name="front_left_hip_roll" />
-    </transmission>
+    </transmission> -->
 
     <link name="front_left_upper_leg">
         <inertial>
@@ -50,17 +49,16 @@
         </visual>
     </link>
     <joint name="front_left_hip_pitch" type="revolute">
-        <limit effort="25" lower="-3.1416" upper="3.1416" velocity="1.5" />
         <parent link="front_left_hip" />
         <child link="front_left_upper_leg" />
-        <origin xyz="0 0.0236 0" />
+        <origin xyz="0 0.0236 0" rpy="0.0 0.0 0.0" />
         <axis xyz="0 1 0" />
-        <limit lower="-3.5" upper="2.4" />
+        <limit effort="25" velocity="1.5" lower="-3.5" upper="2.4" />
     </joint>
-    <transmission type="SimpleTransmission">
+    <!-- <transmission type="SimpleTransmission">
         <joint name="front_left_hip_pitch" />
         <actuator name="front_left_hip_pitch" />
-    </transmission>
+    </transmission> -->
 
     <link name="front_left_lower_leg">
         <inertial>
@@ -75,27 +73,26 @@
             </geometry>
             <material name="black" />
         </visual>
-        <collision group="left_lower_legs">
+        <collision>
             <origin xyz="-0.0265 0 -0.048" />
             <!-- note this is approximate -->
             <geometry>
                 <cylinder radius="0.012" length="0.09" />
             </geometry>
         </collision>
-        <collision group="feet">
+        <!-- <collision group="feet">
             <origin xyz="-0.0265 0 -0.0985" />
             <geometry>
                 <sphere radius="0.0103" />
             </geometry>
-        </collision>
+        </collision> -->
     </link>
     <joint name="front_left_knee" type="revolute">
-        <limit effort="25" lower="-3.1416" upper="3.1416" velocity="1.5" />
         <parent link="front_left_upper_leg" />
         <child link="front_left_lower_leg" />
-        <origin xyz="0 0 -0.0751" />
+        <origin xyz="0 0 -0.0751" rpy="0.0 0.0 0.0" />
         <axis xyz="0 1 0" />
-        <limit lower="-3.1" upper="1.0" />
+        <limit effort="25" velocity="1.5" lower="-3.1" upper="1.0" />
     </joint>
     <link name="front_left_foot"/>    
     <joint name="front_left_ankle" type="fixed">    
@@ -103,11 +100,11 @@
         <child link="front_left_foot"/>    
         <origin rpy="0.0 0.0 0.0" xyz="-0.0208 0.0 -0.098"/>  
     </joint>  
-    <transmission type="SimpleTransmission">
+    <!-- <transmission type="SimpleTransmission">
         <joint name="front_left_knee" />
         <actuator name="front_left_knee" />
-    </transmission>
-    <frame link="front_left_lower_leg" name="front_left_foot_center" xyz="-0.0265 0 -0.0985" />
+    </transmission> -->
+    <!-- <frame link="front_left_lower_leg" name="front_left_foot_center" xyz="-0.0265 0 -0.0985" /> -->
 
     <link name="front_right_hip">
         <inertial>
@@ -117,17 +114,16 @@
         </inertial>
     </link>
     <joint name="front_right_hip_roll" type="revolute">
-        <limit effort="25" lower="-3.1416" upper="3.1416" velocity="1.5" />
         <parent link="body" />
         <child link="front_right_hip" />
-        <origin xyz="0.101000 -0.036250 0.000000" />
+        <origin xyz="0.101000 -0.036250 0.000000" rpy="0.0 0.0 0.0" />
         <axis xyz="1 0 0" />
-        <limit lower="-.6" upper=".6" />
+        <limit effort="25" velocity="1.5" lower="-.6" upper=".6" />
     </joint>
-    <transmission type="SimpleTransmission">
+    <!-- <transmission type="SimpleTransmission">
         <joint name="front_right_hip_roll" />
         <actuator name="front_right_hip_roll" />
-    </transmission>
+    </transmission> -->
 
     <link name="front_right_upper_leg">
         <inertial>
@@ -144,17 +140,16 @@
         </visual>
     </link>
     <joint name="front_right_hip_pitch" type="revolute">
-        <limit effort="25" lower="-3.1416" upper="3.1416" velocity="1.5" />
         <parent link="front_right_hip" />
         <child link="front_right_upper_leg" />
-        <origin xyz="0 -0.0236 0" />
+        <origin xyz="0 -0.0236 0" rpy="0.0 0.0 0.0" />
         <axis xyz="0 1 0" />
-        <limit lower="-3.5" upper="2.4" />
+        <limit effort="25" velocity="1.5" lower="-3.5" upper="2.4" />
     </joint>
-    <transmission type="SimpleTransmission">
+    <!-- <transmission type="SimpleTransmission">
         <joint name="front_right_hip_pitch" />
         <actuator name="front_right_hip_pitch" />
-    </transmission>
+    </transmission> -->
 
     <link name="front_right_lower_leg">
         <inertial>
@@ -169,27 +164,26 @@
             </geometry>
             <material name="black" />
         </visual>
-        <collision group="right_lower_legs">
+        <collision>
             <origin xyz="-0.0265 0 -0.048" />
             <!-- note this is approximate -->
             <geometry>
                 <cylinder radius="0.012" length="0.09" />
             </geometry>
         </collision>
-        <collision group="feet">
+        <!-- <collision group="feet">
             <origin xyz="-0.0265 0 -0.0985" />
             <geometry>
                 <sphere radius="0.0103" />
             </geometry>
-        </collision>
+        </collision> -->
     </link>
     <joint name="front_right_knee" type="revolute">
-        <limit effort="25" lower="-3.1416" upper="3.1416" velocity="1.5" />
         <parent link="front_right_upper_leg" />
         <child link="front_right_lower_leg" />
-        <origin xyz="0 0 -0.0751" />
+        <origin xyz="0 0 -0.0751" rpy="0.0 0.0 0.0" />
         <axis xyz="0 1 0" />
-        <limit lower="-3.1" upper="1.0" />
+        <limit effort="25" velocity="1.5" lower="-3.1" upper="1.0" />
     </joint>
     <link name="front_right_foot"/>    
     <joint name="front_right_ankle" type="fixed">    
@@ -197,11 +191,11 @@
         <child link="front_right_foot"/>    
         <origin rpy="0.0 0.0 0.0" xyz="-0.0208 0.0 -0.098"/>  
     </joint> 
-    <transmission type="SimpleTransmission">
+    <!-- <transmission type="SimpleTransmission">
         <joint name="front_right_knee" />
         <actuator name="front_right_knee" />
-    </transmission>
-    <frame link="front_right_lower_leg" name="front_right_foot_center" xyz="-0.0265 0 -0.0985" />
+    </transmission> -->
+    <!-- <frame link="front_right_lower_leg" name="front_right_foot_center" xyz="-0.0265 0 -0.0985" /> -->
 
     <link name="back_left_hip">
         <inertial>
@@ -211,17 +205,16 @@
         </inertial>
     </link>
     <joint name="back_left_hip_roll" type="revolute">
-        <limit effort="25" lower="-3.1416" upper="3.1416" velocity="1.5" />
         <parent link="body" />
         <child link="back_left_hip" />
-        <origin xyz="-0.101000 0.036250 0.000000" />
+        <origin xyz="-0.101000 0.036250 0.000000" rpy="0.0 0.0 0.0"  />
         <axis xyz="1 0 0" />
-        <limit lower="-.6" upper=".6" />
+        <limit effort="25" velocity="1.5" lower="-.6" upper=".6" />
     </joint>
-    <transmission type="SimpleTransmission">
+    <!-- <transmission type="SimpleTransmission">
         <joint name="back_left_hip_roll" />
         <actuator name="back_left_hip_roll" />
-    </transmission>
+    </transmission> -->
 
     <link name="back_left_upper_leg">
         <inertial>
@@ -238,17 +231,16 @@
         </visual>
     </link>
     <joint name="back_left_hip_pitch" type="revolute">
-        <limit effort="25" lower="-3.1416" upper="3.1416" velocity="1.5" />
         <parent link="back_left_hip" />
         <child link="back_left_upper_leg" />
-        <origin xyz="0 0.0236 0" />
+        <origin xyz="0 0.0236 0" rpy="0.0 0.0 0.0" />
         <axis xyz="0 1 0" />
-        <limit lower="-2.4" upper="3.5" />
+        <limit effort="25" velocity="1.5" lower="-2.4" upper="3.5" />
     </joint>
-    <transmission type="SimpleTransmission">
+    <!-- <transmission type="SimpleTransmission">
         <joint name="back_left_hip_pitch" />
         <actuator name="back_left_hip_pitch" />
-    </transmission>
+    </transmission> -->
 
     <link name="back_left_lower_leg">
         <inertial>
@@ -263,27 +255,26 @@
             </geometry>
             <material name="black" />
         </visual>
-        <collision group="left_lower_legs">
+        <collision>
             <origin xyz="0.0265 0 -0.048" />
             <!-- note this is approximate -->
             <geometry>
                 <cylinder radius="0.012" length="0.09" />
             </geometry>
         </collision>
-        <collision group="feet">
+        <!-- <collision group="feet">
             <origin xyz="0.0265 0 -0.0985" />
             <geometry>
                 <sphere radius="0.0103" />
             </geometry>
-        </collision>
+        </collision> -->
     </link>
     <joint name="back_left_knee" type="revolute">
-        <limit effort="25" lower="-3.1416" upper="3.1416" velocity="1.5" />
         <parent link="back_left_upper_leg" />
         <child link="back_left_lower_leg" />
-        <origin xyz="0 0 -0.0751" />
+        <origin xyz="0 0 -0.0751" rpy="0.0 0.0 0.0" />
         <axis xyz="0 1 0" />
-        <limit lower="-1.0" upper="3.1" />
+        <limit effort="25" velocity="1.5" lower="-1.0" upper="3.1" />
     </joint>
     <link name="back_left_foot"/>    
     <joint name="back_left_ankle" type="fixed">    
@@ -291,11 +282,11 @@
         <child link="back_left_foot"/>    
         <origin rpy="0.0 0.0 0.0" xyz="0.0208 0.0 -0.098"/>  
     </joint> 
-    <transmission type="SimpleTransmission">
+    <!-- <transmission type="SimpleTransmission">
         <joint name="back_left_knee" />
         <actuator name="back_left_knee" />
-    </transmission>
-    <frame link="back_left_lower_leg" name="back_left_foot_center" xyz="0.0265 0 -0.0985" />
+    </transmission> -->
+    <!-- <frame link="back_left_lower_leg" name="back_left_foot_center" xyz="0.0265 0 -0.0985" /> -->
 
     <link name="back_right_hip">
         <inertial>
@@ -305,17 +296,16 @@
         </inertial>
     </link>
     <joint name="back_right_hip_roll" type="revolute">
-        <limit effort="25" lower="-3.1416" upper="3.1416" velocity="1.5" />
         <parent link="body" />
         <child link="back_right_hip" />
-        <origin xyz="-0.101000 -0.036250 0.000000" />
+        <origin xyz="-0.101000 -0.036250 0.000000" rpy="0.0 0.0 0.0" />
         <axis xyz="1 0 0" />
-        <limit lower="-.6" upper=".6" />
+        <limit effort="25" velocity="1.5" lower="-.6" upper=".6" />
     </joint>
-    <transmission type="SimpleTransmission">
+    <!-- <transmission type="SimpleTransmission">
         <joint name="back_right_hip_roll" />
         <actuator name="back_right_hip_roll" />
-    </transmission>
+    </transmission> -->
 
     <link name="back_right_upper_leg">
         <inertial>
@@ -332,17 +322,16 @@
         </visual>
     </link>
     <joint name="back_right_hip_pitch" type="revolute">
-        <limit effort="25" lower="-3.1416" upper="3.1416" velocity="1.5" />
         <parent link="back_right_hip" />
         <child link="back_right_upper_leg" />
-        <origin xyz="0 -0.0236 0" />
+        <origin xyz="0 -0.0236 0" rpy="0.0 0.0 0.0" />
         <axis xyz="0 1 0" />
-        <limit lower="-2.4" upper="3.5" />
+        <limit effort="25" velocity="1.5" lower="-2.4" upper="3.5" />
     </joint>
-    <transmission type="SimpleTransmission">
+    <!-- <transmission type="SimpleTransmission">
         <joint name="back_right_hip_pitch" />
         <actuator name="back_right_hip_pitch" />
-    </transmission>
+    </transmission> -->
     
     <link name="back_right_lower_leg">
         <inertial>
@@ -357,27 +346,26 @@
             </geometry>
             <material name="black" />
         </visual>
-        <collision group="right_lower_legs">
+        <collision>
             <origin xyz="0.0265 0 -0.048" />
             <!-- note this is approximate -->
             <geometry>
                 <cylinder radius="0.012" length="0.09" />
             </geometry>
         </collision>
-        <collision group="feet">
+        <!-- <collision group="feet">
             <origin xyz="0.0265 0 -0.0985" />
             <geometry>
                 <sphere radius="0.0103" />
             </geometry>
-        </collision>
+        </collision> -->
     </link>
     <joint name="back_right_knee" type="revolute">
-        <limit effort="25" lower="-3.1416" upper="3.1416" velocity="1.5" />
         <parent link="back_right_upper_leg" />
         <child link="back_right_lower_leg" />
-        <origin xyz="0 0 -0.0751" />
+        <origin xyz="0 0 -0.0751" rpy="0.0 0.0 0.0" />
         <axis xyz="0 1 0" />
-        <limit lower="-1.0" upper="3.1" />
+        <limit effort="25" velocity="1.5" lower="-1.0" upper="3.1" />
     </joint>
     <link name="back_right_foot"/>    
     <joint name="back_right_ankle" type="fixed">    
@@ -385,9 +373,9 @@
         <child link="back_right_foot"/>    
         <origin rpy="0.0 0.0 0.0" xyz="0.0208 0.0 -0.098"/>  
     </joint> 
-    <transmission type="SimpleTransmission">
+    <!-- <transmission type="SimpleTransmission">
         <joint name="back_right_knee" />
         <actuator name="back_right_knee" />
-    </transmission>
-    <frame link="back_right_lower_leg" name="back_right_foot_center" xyz="0.0265 0 -0.0985" />
+    </transmission> -->
+    <!-- <frame link="back_right_lower_leg" name="back_right_foot_center" xyz="0.0265 0 -0.0985" /> -->
 </robot>
